@@ -1,26 +1,22 @@
-// interface ICard {
-//   event: ( )
-// }
-
-//Importando o chakraProvider
-import { ChakraProvider, Input, Box} from "@chakra-ui/react";
-
-//Importando components
-import Botao from "../Button/Button"
+import { useState } from "react";
+import { Input, Box } from "@chakra-ui/react";
+import Botao from "../Button/Button";
 import { login } from "../../services/login/login";
 
-
 export const Card = () => {
+  const [email, setEmail] = useState("");
+
   return (
-    <ChakraProvider>
-      <Box minHeight="100vh" background="#000" padding="25px">
-        <Box backgroundColor="#ffffff" borderRadius="25px" padding="15px">
-          <h1>Faça o login:</h1>
-          <Input placeholder="email" type="email"/>
-          <Input placeholder="password" type="password"/>
-          <Botao event={login}/>
-        </Box>
-      </Box>
-    </ChakraProvider>
-  )
-}
+    <Box backgroundColor="#ffffff" borderRadius="25px" padding="15px">
+      <h1>Bom dia</h1>
+      <Input
+        placeholder="email"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <Input placeholder="password" type="password" />
+      <Botao event={() => login(email)} />
+    </Box>
+  );
+};
