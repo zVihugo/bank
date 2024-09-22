@@ -1,4 +1,4 @@
-import login from "./login"
+import {login} from "./login"
 
 describe("login", () => {
     const mockEmail = "zvihugo@hotmail.com"
