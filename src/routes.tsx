@@ -11,7 +11,7 @@ const MainRoutes = () => {
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/session/:id" element={isLoggedIn ? <Conta /> : <Home/>} />
-            <Route path="/info" element={<ContaInfo/>} />
+            <Route path="/info" element={isLoggedIn ? <ContaInfo/> : <Home/>} />
           </Routes>
     )
 }

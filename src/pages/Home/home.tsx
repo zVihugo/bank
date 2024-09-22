@@ -9,14 +9,15 @@ import { changeLocalStorage } from "../../services/login/storage";
 
 const Home = () => {
   const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
   const {setIsLoggedIn} = useContext(AppContext)
 
-  const validateUser = async(email: string) => {
-    const loggedIn = await login(email);
+  const validateUser = async(email: string, password: string) => {
+    const loggedIn = await login(email, password);
 
     if(!loggedIn){
-      alert("Invalid email!");
+      alert("Invalid credentials!");
     }else{
       setIsLoggedIn(true);
       changeLocalStorage({login: true});
@@ -33,8 +34,8 @@ const Home = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Input placeholder="password" type="password" />
-        <Botao event={() => validateUser(email)} />
+        <Input placeholder="password" type="password" value={password}  onChange={(e) => setPassword(e.target.value)}/>
+        <Botao event={() => validateUser(email, password)} />
       </Card>
     </>
   );
