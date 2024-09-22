@@ -2,11 +2,13 @@ import linux from "../../images/Linux.png";
 import { useContext } from "react";
 import { Box, Image, Heading, Flex, Spacer, Button } from "@chakra-ui/react";
 import { AppContext } from "../AppContext/AppContext";
+import { changeLocalStorage } from "../../services/login/storage";
 
 const Header = () => {
   const {setIsLoggedIn, isLoggedIn} = useContext(AppContext);
 
   const logout = () => {
+    changeLocalStorage({login: false})
     setIsLoggedIn(false);
   }
 

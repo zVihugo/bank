@@ -5,6 +5,7 @@ import { login } from "../../services/login/login";
 import { useContext, useState } from "react";
 import {  useNavigate } from "react-router-dom";
 import { AppContext } from "../../components/AppContext/AppContext";
+import { changeLocalStorage } from "../../services/login/storage";
 
 const Home = () => {
   const [email, setEmail] = useState<string>("");
@@ -18,6 +19,7 @@ const Home = () => {
       alert("Invalid email!");
     }else{
       setIsLoggedIn(true);
+      changeLocalStorage({login: true});
       navigate("/session/1");
     }
   }
@@ -25,7 +27,6 @@ const Home = () => {
   return (
     <>
       <Card>
-        <h1>Bom dia</h1>
         <Input
           placeholder="email"
           type="email"

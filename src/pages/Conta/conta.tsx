@@ -32,11 +32,11 @@ const Conta = () => {
   }, []);
 
   if (!isLoggedIn) {
-    navigate("/auth");
+    navigate("/");
   }
 
   if(userData && id !== userData.id){
-    navigate("/auth")
+    navigate("/")
   }
 
   return (
